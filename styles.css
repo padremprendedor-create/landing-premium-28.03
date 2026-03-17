@@ -180,7 +180,7 @@ body {
 @media (max-width: 639px) {
     .countdown-inner { gap: 6px; }
     .countdown-phase-label { font-size: 0.6rem; margin-right: 0; width: 100%; text-align: center; margin-bottom: 2px; }
-    header { top: 96px; }
+    header { top: 125px; }
 }
 
 h1, h2, h3, h4, .font-heading {
@@ -359,7 +359,7 @@ header.scrolled {
         radial-gradient(circle at 20% 30%, rgba(20, 217, 230, 0.06) 0%, transparent 40%),
         radial-gradient(circle at 80% 70%, rgba(212, 166, 42, 0.06) 0%, transparent 40%),
         var(--bg-deep);
-    padding-top: 200px;
+    padding-top: 220px;
     padding-bottom: 100px;
 }
 
