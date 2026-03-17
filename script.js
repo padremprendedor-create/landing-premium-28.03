@@ -217,9 +217,6 @@ if (leadForm) {
                         <div style="font-size: 3.5rem; color: var(--gold-premium); margin-bottom: 1.5rem;">✓</div>
                         <h3 style="color: white; margin-bottom: 1rem; font-family: 'Sora', sans-serif;">¡Registro Exitoso!</h3>
                         <p style="color: var(--text-secondary); line-height: 1.6;">Gracias por tu interés en ELOHIM RAYMI. En breve te contactaremos por WhatsApp para coordinar los detalles de tu entrada.</p>
-                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            <p style="font-size: 0.9rem; color: var(--gold-premium);">Estás participando en el sorteo de 2 libros INVICTUS y 1 entrada al evento.</p>
-                        </div>
                     </div>
                 `;
             } else {

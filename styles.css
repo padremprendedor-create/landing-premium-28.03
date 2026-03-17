@@ -440,6 +440,19 @@ header.scrolled {
     border: 1px solid rgba(212, 166, 42, 0.15);
 }
 
+.premium-form-card {
+    background: #081014 !important;
+    border: 1px solid var(--gold-premium) !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.premium-form-card .form-group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
 .form-header {
     margin-bottom: 2rem;
 }
@@ -477,13 +490,56 @@ header.scrolled {
 .form-group input {
     width: 100%;
     padding: 1rem;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: #11181D;
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: 12px;
     color: white;
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     transition: var(--transition-smooth);
+}
+
+.phone-input-group {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.country-prefix {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #11181D;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 0 1rem;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: default;
+}
+
+.country-prefix .flag-icon {
+    border-radius: 2px;
+    width: 22px;
+}
+
+.country-prefix .chevron-down {
+    color: var(--text-muted);
+    margin-left: 2px;
+    font-size: 1.1rem;
+}
+
+.btn-solid-gold {
+    background: #F3BF45 !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-top: 0.5rem;
+}
+.btn-solid-gold:hover {
+    background: #FFD266 !important;
+    transform: translateY(-2px);
 }
 
 .form-group input:focus {
