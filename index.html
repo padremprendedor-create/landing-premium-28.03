@@ -95,15 +95,11 @@
                             </div>
                             <form id="lead-form" class="compact-form">
                                 <div class="form-group">
-                                    <label for="nombre">NOMBRE</label>
-                                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                                    <label for="nombre_completo">NOMBRES Y APELLIDOS</label>
+                                    <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Tu nombre completo" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="apellidos">APELLIDOS</label>
-                                    <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="whatsapp">WHATSAPP *</label>
+                                    <label for="whatsapp">WHATSAPP</label>
                                     <div class="phone-input-group">
                                         <div class="country-prefix">
                                             <img src="https://flagcdn.com/w40/pe.png" alt="Peru flag" class="flag-icon">
@@ -113,8 +109,12 @@
                                         <input type="tel" id="whatsapp" name="whatsapp" placeholder="987654321" required>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn w-full btn-solid-gold">RESERVAR MI ASIENTO ></button>
-                                <p class="microcopy" style="text-align: center; font-style: italic; opacity: 0.8; margin-top: 1.5rem;">Evento gratuito con aforo limitado. Priorizamos a los primeros registrados conformados.</p>
+                                <div class="form-group">
+                                    <label for="email">CORREO</label>
+                                    <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                                </div>
+                                <button type="submit" class="btn w-full btn-solid-gold">RESERVAR MI ASIENTO ›</button>
+                                <p class="microcopy form-microcopy">Aforo limitado. Priorizamos a los primeros registrados confirmados.</p>
                             </form>
                         </div>
                     </div>

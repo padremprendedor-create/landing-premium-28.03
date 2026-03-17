@@ -561,6 +561,13 @@ header.scrolled {
     margin-top: 1rem;
 }
 
+.form-microcopy {
+    text-align: center;
+    font-style: italic;
+    opacity: 0.75;
+    margin-top: 1.25rem;
+}
+
 .trust-text {
     font-size: 0.72rem;
     text-align: center;
