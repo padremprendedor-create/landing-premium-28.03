@@ -409,10 +409,11 @@ header.scrolled {
 
 .hero-bullets li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.75rem;
     color: var(--text-muted);
     font-size: 0.9rem;
+    line-height: 1.55;
 }
 
 .hero-bullets li::before {
@@ -420,6 +421,7 @@ header.scrolled {
     color: var(--cyan-bright);
     font-weight: bold;
     flex-shrink: 0;
+    margin-top: 0.1em;
 }
 
 .text-apoyo-visual {
