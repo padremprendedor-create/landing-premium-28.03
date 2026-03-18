@@ -197,7 +197,7 @@ if (leadForm) {
         submitBtn.style.opacity = '0.7';
 
         try {
-            const response = await fetch('https://clase-easypanel-n8n.zycrzt.easypanel.host/webhook-test/evento2803', {
+            const response = await fetch('https://clase-easypanel-n8n.zycrzt.easypanel.host/webhook/evento2803', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
