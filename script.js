@@ -189,6 +189,7 @@ if (vslIframe && unmuteBtn && typeof Vimeo !== 'undefined') {
     unmuteBtn.addEventListener('click', () => {
         player.setVolume(1).catch(console.error);
         player.setMuted(false).catch(console.error);
+        player.play().catch(console.error);
         
         // Hide the overlay
         unmuteOverlay.style.opacity = '0';
