@@ -61,7 +61,7 @@
         if (!phase1Diff.expired) {
             // Phase 1: Pre-launch countdown
             time = phase1Diff;
-            phaseLabel = '🔥 Precio especial S/250 termina en';
+            phaseLabel = '🔥 Último lote a S/250 — se acaba en';
             ctaText = 'Reserva ahora';
         } else {
             // Phase 2: Launch countdown
