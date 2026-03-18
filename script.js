@@ -177,22 +177,37 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===========================
-// Lead Form Handling
+// Lead Form Handling & Popup
 // ===========================
 const leadForm = document.getElementById('lead-form');
+const popup = document.getElementById('loading-popup');
+const popupLoading = document.getElementById('popup-state-loading');
+const popupSuccess = document.getElementById('popup-state-success');
+const closePopupBtn = document.getElementById('close-popup-btn');
+
+if (closePopupBtn && popup) {
+    closePopupBtn.addEventListener('click', () => {
+        popup.classList.add('hidden');
+    });
+}
+
 if (leadForm) {
     leadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const submitBtn = leadForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
 
         // Collect data
         const formData = new FormData(leadForm);
         const data = Object.fromEntries(formData.entries());
 
-        // Loading state
-        submitBtn.innerHTML = 'PROCESANDO...';
+        // Show loading popup
+        if (popup && popupLoading && popupSuccess) {
+            popup.classList.remove('hidden');
+            popupLoading.classList.add('active');
+            popupSuccess.classList.remove('active');
+        }
+
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.7';
 
@@ -206,24 +221,30 @@ if (leadForm) {
                     ...data,
                     source: window.location.hostname,
                     timestamp: new Date().toISOString(),
-                    page: 'Landing ELOHIM RAYMI v2'
+                    page: 'Landing INVICTUS v2'
                 }),
             });
 
             if (response.ok) {
-                // Success state
-                leadForm.innerHTML = `
-                    <div style="text-align: center; padding: 2rem 1rem; animation: fadeIn 0.5s ease forwards;">
-                        <div style="font-size: 3.5rem; color: var(--gold-premium); margin-bottom: 1.5rem;">✓</div>
-                        <h3 style="color: white; margin-bottom: 1rem; font-family: 'Sora', sans-serif;">¡Registro Exitoso!</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.6;">Gracias por tu interés en ELOHIM RAYMI. En breve te contactaremos por WhatsApp para coordinar los detalles de tu entrada.</p>
-                    </div>
-                `;
+                // Success state in popup
+                if (popupLoading && popupSuccess) {
+                    popupLoading.classList.remove('active');
+                    popupSuccess.classList.add('active');
+                }
+                leadForm.reset();
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtn.innerHTML = 'RESERVAR MI ASIENTO ›';
             } else {
                 throw new Error('Server returned ' + response.status);
             }
         } catch (error) {
             console.error('Submission error:', error);
+
+            // Hide popup on error
+            if (popup) {
+                popup.classList.add('hidden');
+            }
 
             // Error state
             submitBtn.innerHTML = 'ERROR - REINTENTAR';
