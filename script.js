@@ -187,6 +187,7 @@ if (vslIframe && unmuteBtn && typeof Vimeo !== 'undefined') {
     const player = new Vimeo.Player(vslIframe);
     
     unmuteBtn.addEventListener('click', () => {
+        player.setCurrentTime(0).catch(console.error);
         player.setVolume(1).catch(console.error);
         player.setMuted(false).catch(console.error);
         player.play().catch(console.error);
