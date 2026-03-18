@@ -181,6 +181,8 @@ body {
     .countdown-inner { gap: 6px; }
     .countdown-phase-label { font-size: 0.6rem; margin-right: 0; width: 100%; text-align: center; margin-bottom: 2px; }
     header { top: 235px; }
+    .logo { font-size: 1.1rem; letter-spacing: 0px; }
+    .logo img { height: 32px; margin-right: 0.4rem; }
 }
 
 h1, h2, h3, h4, .font-heading {
@@ -333,6 +335,9 @@ header.scrolled {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
     font-family: 'Sora', sans-serif;
     font-weight: 800;
     font-size: 1.3rem;
@@ -344,7 +349,7 @@ header.scrolled {
 .logo img {
     height: 36px;
     width: auto;
-    margin-right: 0.7rem;
+    margin-right: 0.5rem;
     vertical-align: middle;
 }
 
