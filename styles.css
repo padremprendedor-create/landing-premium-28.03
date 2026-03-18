@@ -180,7 +180,7 @@ body {
 @media (max-width: 639px) {
     .countdown-inner { gap: 6px; }
     .countdown-phase-label { font-size: 0.6rem; margin-right: 0; width: 100%; text-align: center; margin-bottom: 2px; }
-    header { top: 235px; }
+    header { top: 85px; }
     .logo { font-size: 0.73rem; letter-spacing: 0px; }
     .logo img { height: 32px; margin-right: 0.4rem; }
 }
@@ -1276,7 +1276,7 @@ footer p {
     }
 
     .hero {
-        padding-top: 280px;
+        padding-top: 140px;
         padding-bottom: 60px;
     }
 
