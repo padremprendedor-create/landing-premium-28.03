@@ -177,6 +177,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===========================
+// Vimeo VSL Player Handle
+// ===========================
+const vslIframe = document.getElementById('vsl-iframe');
+const unmuteOverlay = document.getElementById('unmute-overlay');
+const unmuteBtn = document.getElementById('unmute-vsl-btn');
+
+if (vslIframe && unmuteBtn && typeof Vimeo !== 'undefined') {
+    const player = new Vimeo.Player(vslIframe);
+    
+    unmuteBtn.addEventListener('click', () => {
+        player.setVolume(1).catch(console.error);
+        player.setMuted(false).catch(console.error);
+        
+        // Hide the overlay
+        unmuteOverlay.style.opacity = '0';
+        unmuteOverlay.style.pointerEvents = 'none';
+        setTimeout(() => {
+            unmuteOverlay.style.display = 'none';
+        }, 500);
+    });
+}
+
+// ===========================
 // Lead Form Handling
 // ===========================
 const leadForm = document.getElementById('lead-form');
