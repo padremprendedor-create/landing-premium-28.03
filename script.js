@@ -258,3 +258,85 @@ if (leadForm) {
         }
     });
 }
+
+// ===========================
+// Modal Privado Handling
+// ===========================
+const modalPrivado = document.getElementById('modal-privado');
+const closeBtn = document.getElementById('close-modal-privado');
+
+function openPrivateModal(e) {
+    if (e) e.preventDefault();
+    if (modalPrivado) {
+        modalPrivado.classList.add('active');
+        document.body.style.overflow = 'hidden'; // prevent scrolling
+    }
+}
+
+function closePrivateModal() {
+    if (modalPrivado) {
+        modalPrivado.classList.remove('active');
+        document.body.style.overflow = ''; 
+    }
+}
+
+// Close when clicking outside
+if (modalPrivado) {
+    modalPrivado.addEventListener('click', (e) => {
+        if (e.target === modalPrivado) {
+            closePrivateModal();
+        }
+    });
+}
+
+// Handle Privado Form Submit
+const loadFormPrivado = document.getElementById('lead-form-privado');
+if (loadFormPrivado) {
+    loadFormPrivado.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitBtn = loadFormPrivado.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+
+        const formData = new FormData(loadFormPrivado);
+        const data = Object.fromEntries(formData.entries());
+
+        submitBtn.innerHTML = 'PROCESANDO...';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+
+        try {
+            const response = await fetch('https://clase-easypanel-n8n.zycrzt.easypanel.host/webhook/evento2803', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...data,
+                    source: window.location.hostname,
+                    timestamp: new Date().toISOString(),
+                    page: 'Landing ELOHIM RAYMI v2 - Presentación Privada'
+                }),
+            });
+
+            if (response.ok) {
+                loadFormPrivado.innerHTML = `
+                    <div style="text-align: center; padding: 2rem 1rem; animation: fadeIn 0.5s ease forwards;">
+                        <div style="font-size: 3.5rem; color: var(--gold-premium); margin-bottom: 1.5rem;">✓</div>
+                        <h3 style="color: white; margin-bottom: 1rem; font-family: 'Sora', sans-serif;">¡Solicitud Enviada!</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">Gracias por tu interés en una presentación privada. Nos pondremos en contacto contigo pronto.</p>
+                    </div>
+                `;
+            } else {
+                throw new Error('Server returned ' + response.status);
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            submitBtn.innerHTML = 'ERROR - REINTENTAR';
+            submitBtn.style.background = '#ff4d4d';
+            submitBtn.style.opacity = '1';
+            submitBtn.disabled = false;
+            alert('Lo sentimos, hubo un problema al enviar tus datos. Por favor, intenta de nuevo.');
+        }
+    });
+}

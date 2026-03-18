@@ -261,7 +261,7 @@
                     <p>Lo que más peso tiene aquí no es solo vivir un gran lanzamiento. Es abrir la puerta a una conversación sobre participación, beneficios de largo plazo y visión de herencia para quienes saben pensar más allá del momento.</p>
                     <p class="frase-destacada">No todos reciben una invitación así. Y no todos la reconocen a tiempo.</p>
                     <div style="text-align: center;">
-                        <a href="#registro" class="btn btn-secondary">SOLICITAR ACCESO A PRESENTACIÓN PRIVADA</a>
+                        <a href="#" class="btn btn-secondary" onclick="openPrivateModal(event)">SOLICITAR ACCESO A PRESENTACIÓN PRIVADA</a>
                     </div>
                 </div>
             </div>
@@ -282,7 +282,7 @@
                     <p class="texto-apoyo">Para quienes quieran profundizar en esta parte, se abrirá la opción de agendar una presentación privada.</p>
                     <p class="frase-destacada">Cuando una visión se formaliza, deja de ser solo entusiasmo y empieza a sentirse real.</p>
                     <div style="text-align: center;">
-                        <a href="#registro" class="btn btn-secondary">SOLICITAR ACCESO A PRESENTACIÓN PRIVADA</a>
+                        <a href="#" class="btn btn-secondary" onclick="openPrivateModal(event)">SOLICITAR ACCESO A PRESENTACIÓN PRIVADA</a>
                     </div>
                 </div>
             </div>
@@ -395,7 +395,7 @@
                     <h2 style="margin-bottom: 1.5rem; font-size: 1.8rem;">¿No puedes asistir o prefieres conocer más primero?</h2>
                     <p class="copy-main" style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.7;">Si deseas conocer más sobre ELOHIM RAYMI, profundizar en la parte de participación accionaria o acceder a una explicación más enfocada en beneficios y oportunidad, puedes solicitar acceso a una presentación privada.</p>
                     <p class="copy-support" style="color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.95rem; line-height: 1.6;">Esta opción está pensada para personas con mayor interés, que desean evaluar la propuesta con más detalle y agendar un espacio de presentación de forma más ordenada y exclusiva.</p>
-                    <a href="#registro" class="btn btn-secondary">SOLICITAR ACCESO A PRESENTACIÓN PRIVADA</a>
+                    <a href="#" class="btn btn-secondary" onclick="openPrivateModal(event)">SOLICITAR ACCESO A PRESENTACIÓN PRIVADA</a>
                     <p class="microcopy" style="margin-top: 1.5rem;">Serás dirigido a una agenda privada para seleccionar tu horario y completar un formulario breve de acceso.</p>
                     <p class="extra-text" style="color: var(--text-muted); font-size: 0.8rem; margin-top: 1rem; line-height: 1.5;">El acceso se gestiona mediante una agenda privada para mantener orden, filtrar mejor el interés y brindar una atención más precisa.</p>
                 </div>
@@ -523,7 +523,7 @@
                         <p class="precio-line">Reserva hoy tu entrada por <span class="text-gold" style="font-weight: 800;">S/250</span> antes del 25/03.<br><span style="font-size: 0.9rem; opacity: 0.7;">Después, el valor será de S/400.</span></p>
                         <div class="cta-group">
                             <a href="#registro" class="btn btn-primary">RESERVAR MI ENTRADA</a>
-                            <a href="#registro" class="btn btn-secondary">SOLICITAR ACCESO A PRESENTACIÓN PRIVADA</a>
+                            <a href="#" class="btn btn-secondary" onclick="openPrivateModal(event)">SOLICITAR ACCESO A PRESENTACIÓN PRIVADA</a>
                         </div>
                     </div>
                     <p class="microcopy-final">Cupos limitados | Precio promocional hasta el 25/03 | Centro De Convenciones, Alabado 207, Cusco 08002</p>
@@ -532,6 +532,44 @@
         </section>
 
     </main>
+
+    <!-- ========== MODAL PRESENTACIÓN PRIVADA ========== -->
+    <div id="modal-privado" class="modal-overlay">
+        <div class="modal-content glass-card premium-form-card">
+            <button class="modal-close" id="close-modal-privado" onclick="closePrivateModal()">&times;</button>
+            <div class="form-header" style="text-align: center;">
+                <h2 style="font-size: 1.35rem; line-height: 1.4; margin-bottom: 0.5rem; color: var(--gold-premium);">Agenda tu presentación privada.</h2>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">Si quieres acceso antes del lanzamiento</p>
+            </div>
+            <form id="lead-form-privado" class="compact-form" style="text-align: left;">
+                <div class="form-group">
+                    <label for="nombre_completo_privado">NOMBRES Y APELLIDOS</label>
+                    <input type="text" id="nombre_completo_privado" name="nombre_completo" placeholder="Tu nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="dni_privado">DNI / DOCUMENTO</label>
+                    <input type="text" id="dni_privado" name="dni" placeholder="Tu DNI o Pasaporte" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp_privado">WHATSAPP</label>
+                    <div class="phone-input-group">
+                        <div class="country-prefix">
+                            <img src="https://flagcdn.com/w40/pe.png" alt="Peru flag" class="flag-icon">
+                            <span>+51</span>
+                            <span class="chevron-down">›</span>
+                        </div>
+                        <input type="tel" id="whatsapp_privado" name="whatsapp" placeholder="987654321" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email_privado">CORREO</label>
+                    <input type="email" id="email_privado" name="email" placeholder="tu@correo.com" required>
+                </div>
+                <button type="submit" class="btn w-full btn-solid-gold">AGENDAR REUNIÓN</button>
+                <p class="microcopy form-microcopy">Últimas reuniones previas al lanzamiento oficial.</p>
+            </form>
+        </div>
+    </div>
 
     <!-- ========== FOOTER ========== -->
     <footer>
