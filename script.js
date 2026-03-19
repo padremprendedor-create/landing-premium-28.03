@@ -202,6 +202,55 @@ if (vslIframe && unmuteBtn && typeof Vimeo !== 'undefined') {
 }
 
 // ===========================
+// Loading & Pop-up Helpers
+// ===========================
+const loadingOverlay = document.getElementById('loading-overlay');
+
+function showLoading() {
+    if (loadingOverlay) {
+        loadingOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function hideLoading() {
+    if (loadingOverlay) {
+        loadingOverlay.classList.remove('active');
+    }
+}
+
+function showSuccessPopup(popupId) {
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        hideLoading();
+        // Small delay for smooth transition from loading to popup
+        setTimeout(() => {
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }, 200);
+    }
+}
+
+function closeSuccessPopup(popupId, e) {
+    if (e) e.preventDefault();
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close popups on overlay click
+document.querySelectorAll('.popup-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+
+// ===========================
 // Lead Form Handling
 // ===========================
 const leadForm = document.getElementById('lead-form');
@@ -216,10 +265,11 @@ if (leadForm) {
         const formData = new FormData(leadForm);
         const data = Object.fromEntries(formData.entries());
 
-        // Loading state
+        // Show loading overlay
         submitBtn.innerHTML = 'PROCESANDO...';
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.7';
+        showLoading();
 
         try {
             const response = await fetch('https://clase-easypanel-n8n.zycrzt.easypanel.host/webhook/evento2803', {
@@ -236,27 +286,32 @@ if (leadForm) {
             });
 
             if (response.ok) {
-                // Success state
-                leadForm.innerHTML = `
-                    <div style="text-align: center; padding: 2rem 1rem; animation: fadeIn 0.5s ease forwards;">
-                        <div style="font-size: 3.5rem; color: var(--gold-premium); margin-bottom: 1.5rem;">✓</div>
-                        <h3 style="color: white; margin-bottom: 1rem; font-family: 'Sora', sans-serif;">¡Registro Exitoso!</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.6;">Gracias por tu interés en ELOHIM RAYMI. En breve te contactaremos por WhatsApp para coordinar los detalles de tu entrada.</p>
-                    </div>
-                `;
+                // Show loading for 2.5 seconds minimum for premium feel
+                setTimeout(() => {
+                    showSuccessPopup('popup-reserva');
+                    // Reset form for future use
+                    leadForm.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }, 2500);
             } else {
                 throw new Error('Server returned ' + response.status);
             }
         } catch (error) {
             console.error('Submission error:', error);
+            hideLoading();
+            document.body.style.overflow = '';
 
-            // Error state
             submitBtn.innerHTML = 'ERROR - REINTENTAR';
             submitBtn.style.background = '#ff4d4d';
             submitBtn.style.opacity = '1';
             submitBtn.disabled = false;
 
-            alert('Lo sentimos, hubo un problema al enviar tus datos. Por favor, intenta de nuevo.');
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = '';
+            }, 3000);
         }
     });
 }
@@ -307,6 +362,10 @@ if (loadFormPrivado) {
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.7';
 
+        // Close privado modal and show loading
+        closePrivateModal();
+        showLoading();
+
         try {
             const response = await fetch('https://clase-easypanel-n8n.zycrzt.easypanel.host/webhook/evento2803', {
                 method: 'POST',
@@ -322,23 +381,35 @@ if (loadFormPrivado) {
             });
 
             if (response.ok) {
-                loadFormPrivado.innerHTML = `
-                    <div style="text-align: center; padding: 2rem 1rem; animation: fadeIn 0.5s ease forwards;">
-                        <div style="font-size: 3.5rem; color: var(--gold-premium); margin-bottom: 1.5rem;">✓</div>
-                        <h3 style="color: white; margin-bottom: 1rem; font-family: 'Sora', sans-serif;">¡Solicitud Enviada!</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.6;">Gracias por tu interés en una presentación privada. Nos pondremos en contacto contigo pronto.</p>
-                    </div>
-                `;
+                // Show loading for 2.5 seconds minimum for premium feel
+                setTimeout(() => {
+                    showSuccessPopup('popup-privado');
+                    // Reset form for future use
+                    loadFormPrivado.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }, 2500);
             } else {
                 throw new Error('Server returned ' + response.status);
             }
         } catch (error) {
             console.error('Submission error:', error);
+            hideLoading();
+            document.body.style.overflow = '';
+
+            // Reopen the modal to show error
+            openPrivateModal();
             submitBtn.innerHTML = 'ERROR - REINTENTAR';
             submitBtn.style.background = '#ff4d4d';
             submitBtn.style.opacity = '1';
             submitBtn.disabled = false;
-            alert('Lo sentimos, hubo un problema al enviar tus datos. Por favor, intenta de nuevo.');
+
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = '';
+            }, 3000);
         }
     });
 }
+
