@@ -42,7 +42,12 @@
     }
 
     function showExpired() {
-        banner.innerHTML = '<div class="countdown-inner"><span class="countdown-expired-msg">✨ ¡El evento ha comenzado! ✨</span></div>';
+        const contentWrapper = banner.querySelector('.countdown-content-wrapper');
+        const ctaBtn = banner.querySelector('.countdown-cta');
+        if (contentWrapper) {
+            contentWrapper.innerHTML = '<span class="countdown-expired-msg">✨ ¡El evento ha comenzado! ✨</span>';
+        }
+        if (ctaBtn) ctaBtn.style.display = 'none';
     }
 
     function tick() {
@@ -61,7 +66,7 @@
         if (!phase1Diff.expired) {
             // Phase 1: Pre-launch countdown
             time = phase1Diff;
-            phaseLabel = '🔥 Último lote a S/250 — se acaba en';
+            phaseLabel = '🔥 El gran lanzamiento se acerca — asegura tu lugar en';
             ctaText = 'Reserva ahora';
         } else {
             // Phase 2: Launch countdown
@@ -94,17 +99,7 @@
     setInterval(tick, 1000);
 })();
 
-// ===========================
-// Header scroll effect
-// ===========================
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+
 
 // ===========================
 // FAQ Accordion
