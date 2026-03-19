@@ -149,10 +149,17 @@
                                         <input type="tel" id="whatsapp" name="whatsapp" placeholder="987654321" required>
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label for="email">CORREO</label>
-                                    <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                                    <label for="plan_seleccionado">TIPO DE ENTRADA</label>
+                                    <select id="plan_seleccionado" name="plan" required>
+                                        <option value="" disabled selected>Selecciona tu entrada</option>
+                                        <option value="GENERAL">General (US$ 50)</option>
+                                        <option value="VIP">VIP (US$ 100)</option>
+                                        <option value="EXPERIENCE">Experience (US$ 150)</option>
+                                    </select>
                                 </div>
+
                                 <button type="submit" class="btn w-full btn-solid-gold">RESERVAR MI ENTRADA ›</button>
                                 <p class="microcopy form-microcopy">Te contactaremos por WhatsApp para indicarte el siguiente paso de confirmación. Tu registro participa automáticamente en el sorteo de 2 libros INVICTUS y 1 entrada al evento.</p>
                             </form>
@@ -322,19 +329,156 @@
         </section>
 
         <!-- ========================================
-             8) PRECIO, UBICACIÓN Y URGENCIA
+             8) PAQUETES DE ENTRADA — PRICING SECTION
              ======================================== -->
-        <section id="precio" style="background: var(--bg-petrol);">
+        <section id="precio" class="pricing-section">
             <div class="container">
                 <div class="section-header" data-reveal>
                     <div class="section-divider"></div>
-                    <h2>Asegura hoy tu entrada al lanzamiento oficial</h2>
+                    <span class="eyebrow">Paquetes de Entrada</span>
+                    <h2>Elige tu nivel de experiencia para el lanzamiento oficial</h2>
+                    <p>Tres formas de vivir una noche histórica en Cusco. Cada paquete ha sido pensado para un nivel distinto de cercanía, exclusividad y acceso.</p>
                 </div>
-                <div class="glass-card pricing-card" data-reveal>
-                    <span class="badge-prioritario">ÚLTIMO LOTE DE LANZAMIENTO</span>
-                    <p style="color: var(--text-secondary); font-size: 1.05rem;">Último lote de lanzamiento a</p>
-                    <div class="price-main">S/250</div>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Disponible hasta el 25/03 o hasta agotar los cupos de esta etapa.<br>Luego la entrada sube a S/400.</p>
+
+                <div class="pricing-grid">
+
+                    <!-- CARD 1: GENERAL -->
+                    <div class="pricing-tier-card" data-reveal data-reveal-delay="1">
+                        <div class="tier-header">
+                            <span class="tier-badge tier-badge-general">ENTRADA</span>
+                            <h3 class="tier-name">GENERAL</h3>
+                            <p class="tier-subtitle">La puerta de entrada a una noche histórica de inspiración, turismo, inversión y posicionamiento.</p>
+                        </div>
+                        <div class="tier-price-block">
+                            <span class="tier-currency">US$</span>
+                            <span class="tier-amount">50</span>
+                        </div>
+                        <ul class="tier-benefits">
+                            <li>
+                                <svg class="tier-check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Acceso al evento principal
+                            </li>
+                            <li>
+                                <svg class="tier-check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Alfombra roja
+                            </li>
+                            <li>
+                                <svg class="tier-check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Sesión fotográfica
+                            </li>
+                            <li>
+                                <svg class="tier-check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Aparición en documental
+                            </li>
+                            <li>
+                                <svg class="tier-check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Participación en la noche de gala
+                            </li>
+                        </ul>
+                        <a href="#registro" class="btn btn-tier btn-tier-general" data-plan="GENERAL">COMPRAR ENTRADA</a>
+                    </div>
+
+                    <!-- CARD 2: VIP -->
+                    <div class="pricing-tier-card pricing-tier-vip" data-reveal data-reveal-delay="2">
+                        <div class="tier-header">
+                            <span class="tier-badge tier-badge-vip">PREFERENCIAL</span>
+                            <h3 class="tier-name tier-name-vip">VIP</h3>
+                            <p class="tier-subtitle">La mejor ubicación y una experiencia preferencial para vivir el lanzamiento con comodidad y estatus.</p>
+                        </div>
+                        <div class="tier-price-block">
+                            <span class="tier-currency">US$</span>
+                            <span class="tier-amount tier-amount-vip">100</span>
+                        </div>
+                        <ul class="tier-benefits">
+                            <li>
+                                <svg class="tier-check tier-check-vip" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Acceso al evento
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-vip" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Alfombra roja
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-vip" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Sesión fotográfica
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-vip" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Aparición en documental
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-vip" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Zona preferencial
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-vip" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Coffee break en patio
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-vip" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Bebidas y café incluidos
+                            </li>
+                        </ul>
+                        <a href="#registro" class="btn btn-tier btn-tier-vip" data-plan="VIP">COMPRAR ENTRADA</a>
+                    </div>
+
+                    <!-- CARD 3: EXPERIENCE (Featured) -->
+                    <div class="pricing-tier-card pricing-tier-featured" data-reveal data-reveal-delay="3">
+                        <div class="tier-featured-label">★ MÁS EXCLUSIVO</div>
+                        <div class="tier-header">
+                            <span class="tier-badge tier-badge-experience">PREMIUM</span>
+                            <h3 class="tier-name tier-name-experience">EXPERIENCE</h3>
+                            <p class="tier-subtitle">La entrada más exclusiva para vivir el lanzamiento desde adentro y al más alto nivel.</p>
+                        </div>
+                        <div class="tier-price-block">
+                            <span class="tier-currency tier-currency-gold">US$</span>
+                            <span class="tier-amount tier-amount-experience">150</span>
+                        </div>
+                        <ul class="tier-benefits">
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Acceso total al evento
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Alfombra roja
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Sesión fotográfica
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Aparición en documental
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Zona VIP Experience
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Comida y bebidas dentro del salón
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Foto con William Luna
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Foto con Milena Warthon
+                            </li>
+                            <li>
+                                <svg class="tier-check tier-check-gold" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Cercanía con ponentes e invitados especiales
+                            </li>
+                        </ul>
+                        <a href="#registro" class="btn btn-tier btn-tier-experience" data-plan="EXPERIENCE">COMPRAR ENTRADA</a>
+                    </div>
+
+                </div>
+
+                <!-- Event details below pricing -->
+                <div class="pricing-event-info" data-reveal>
                     <div class="price-details">
                         <div class="price-row">
                             <span>Fecha:</span>
@@ -349,11 +493,6 @@
                             <span>A una cuadra de la Plaza Mayor de Cusco</span>
                         </div>
                     </div>
-                    <div class="price-urgency-box">
-                        <p>Entrar ahora no solo te permite asegurar este último lote. También te permite tomar posición antes de que la expectativa, la atención y el valor percibido del evento sigan subiendo.</p>
-                    </div>
-                    <p style="color: var(--text-muted); font-size: 0.82rem; text-align: center; margin-bottom: 1.5rem;">Tu registro también participa automáticamente por 2 libros INVICTUS y 1 entrada al evento.</p>
-                    <a href="#registro" class="btn btn-primary w-full">RESERVAR MI ENTRADA</a>
                     <p class="microcopy" style="text-align: center; margin-top: 1.5rem;">Completa tu registro hoy y te contactaremos por WhatsApp para confirmar el siguiente paso.</p>
                 </div>
             </div>
@@ -576,10 +715,7 @@
                     <label for="dni_privado">DNI</label>
                     <input type="text" id="dni_privado" name="dni" placeholder="Tu DNI o Pasaporte" required>
                 </div>
-                <div class="form-group">
-                    <label for="email_privado">CORREO ELECTRÓNICO</label>
-                    <input type="email" id="email_privado" name="email" placeholder="tu@correo.com" required>
-                </div>
+
                 <button type="submit" class="btn w-full btn-solid-gold">SOLICITAR ACCESO PRIVADO</button>
                 <p class="microcopy form-microcopy">Tu solicitud será revisada y, de ser aprobada, recibirás el siguiente paso para acceder a la presentación.</p>
             </form>

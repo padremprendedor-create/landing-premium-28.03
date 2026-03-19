@@ -666,6 +666,38 @@ header.scrolled {
     opacity: 0.6;
 }
 
+.form-group select {
+    width: 100%;
+    padding: 1rem 2.8rem 1rem 1rem;
+    background: #11181D;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    /* Custom arrow */
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A62A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--gold-premium);
+    background-color: rgba(255,255,255,0.05);
+    box-shadow: 0 0 20px rgba(212, 166, 42, 0.15);
+}
+
+.form-group select option {
+    background: #0E1A1F;
+    color: white;
+    padding: 0.5rem;
+}
+
 .microcopy {
     font-size: 0.78rem;
     color: var(--text-muted);
@@ -952,6 +984,370 @@ header.scrolled {
     font-size: 1.15rem;
     color: var(--text-secondary);
     line-height: 1.6;
+}
+
+/* ===========================
+   Pricing Section — 3 Tier Cards
+   =========================== */
+.pricing-section {
+    background:
+        radial-gradient(ellipse at 30% 50%, rgba(212, 166, 42, 0.04) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 50%, rgba(20, 217, 230, 0.03) 0%, transparent 55%),
+        var(--bg-petrol);
+    overflow: hidden;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Base Card --- */
+.pricing-tier-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: rgba(11, 35, 40, 0.6);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 24px;
+    padding: 2.5rem 2rem 2rem;
+    transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1),
+                box-shadow 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.pricing-tier-card:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* --- VIP Card Accent --- */
+.pricing-tier-vip {
+    border-color: rgba(20, 217, 230, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(20, 217, 230, 0.04);
+}
+
+.pricing-tier-vip:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 40px rgba(20, 217, 230, 0.08);
+}
+
+/* --- EXPERIENCE Featured Card — Animated Glow Border --- */
+.pricing-tier-featured {
+    background: rgba(11, 35, 40, 0.75);
+    border: 2px solid transparent;
+    border-radius: 24px;
+    z-index: 1;
+}
+
+.pricing-tier-featured::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 26px;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--glow-angle, 0deg),
+        rgba(212, 166, 42, 0.8),
+        rgba(240, 200, 80, 0.3),
+        rgba(169, 122, 18, 0.1),
+        rgba(212, 166, 42, 0.05),
+        rgba(169, 122, 18, 0.1),
+        rgba(240, 200, 80, 0.3),
+        rgba(212, 166, 42, 0.8)
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+    animation: glow-rotate 4s linear infinite;
+}
+
+@property --glow-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes glow-rotate {
+    to { --glow-angle: 360deg; }
+}
+
+.pricing-tier-featured::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(212, 166, 42, 0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.pricing-tier-featured:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 50px rgba(212, 166, 42, 0.12),
+                0 0 100px rgba(212, 166, 42, 0.05);
+}
+
+/* --- Featured Label --- */
+.tier-featured-label {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--gold-premium), #F0C850);
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.5rem;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 15px rgba(212, 166, 42, 0.3);
+}
+
+/* --- Tier Header --- */
+.tier-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tier-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.tier-badge-general {
+    background: rgba(143, 167, 173, 0.12);
+    color: var(--text-muted);
+    border: 1px solid rgba(143, 167, 173, 0.2);
+}
+
+.tier-badge-vip {
+    background: rgba(20, 217, 230, 0.08);
+    color: var(--cyan-bright);
+    border: 1px solid rgba(20, 217, 230, 0.2);
+}
+
+.tier-badge-experience {
+    background: rgba(212, 166, 42, 0.1);
+    color: var(--gold-premium);
+    border: 1px solid rgba(212, 166, 42, 0.25);
+}
+
+.tier-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.tier-name-vip {
+    color: var(--cyan-bright);
+    text-shadow: 0 0 20px rgba(20, 217, 230, 0.2);
+}
+
+.tier-name-experience {
+    background: linear-gradient(135deg, var(--gold-premium), #F0C850, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.65rem;
+}
+
+.tier-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+/* --- Price Block --- */
+.tier-price-block {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tier-currency {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    vertical-align: super;
+    margin-right: 4px;
+}
+
+.tier-currency-gold {
+    color: var(--gold-premium);
+}
+
+.tier-amount {
+    font-family: 'Sora', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.tier-amount-vip {
+    color: var(--cyan-bright);
+    text-shadow: 0 0 30px rgba(20, 217, 230, 0.15);
+}
+
+.tier-amount-experience {
+    color: var(--gold-premium);
+    text-shadow: 0 0 40px rgba(212, 166, 42, 0.25);
+}
+
+/* --- Benefits List --- */
+.tier-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.tier-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.tier-check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--cyan-dark);
+}
+
+.tier-check-vip {
+    color: var(--cyan-bright);
+}
+
+.tier-check-gold {
+    color: var(--gold-premium);
+}
+
+/* --- CTA Buttons --- */
+.btn-tier {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1.1rem 1.5rem;
+    border-radius: 14px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    margin-top: auto;
+}
+
+.btn-tier-general {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-tier-general:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-tier-vip {
+    background: transparent;
+    color: var(--cyan-bright);
+    border: 2px solid var(--cyan-bright);
+    box-shadow: 0 0 15px rgba(20, 217, 230, 0.1);
+}
+
+.btn-tier-vip:hover {
+    background: rgba(20, 217, 230, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(20, 217, 230, 0.15);
+}
+
+.btn-tier-experience {
+    background: linear-gradient(135deg, var(--gold-premium), #F0C850);
+    color: #000;
+    border: none;
+    box-shadow: 0 6px 25px rgba(212, 166, 42, 0.25);
+}
+
+.btn-tier-experience:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(212, 166, 42, 0.4);
+}
+
+/* --- Event Info Below Cards --- */
+.pricing-event-info {
+    max-width: 520px;
+    margin: 3rem auto 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        gap: 2rem;
+    }
+
+    .pricing-tier-featured {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-tier-card {
+        padding: 2rem 1.5rem 1.5rem;
+    }
+
+    .tier-amount {
+        font-size: 3rem;
+    }
+
+    .pricing-event-info {
+        padding: 1.2rem 1.5rem;
+    }
 }
 
 /* ===========================

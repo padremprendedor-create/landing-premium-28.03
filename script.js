@@ -413,3 +413,22 @@ if (loadFormPrivado) {
     });
 }
 
+// ===========================
+// Pricing Tier → Form Auto-Select
+// ===========================
+document.querySelectorAll('[data-plan]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const plan = btn.getAttribute('data-plan');
+        const select = document.getElementById('plan_seleccionado');
+        if (select && plan) {
+            select.value = plan;
+            // Brief golden highlight to confirm selection
+            select.style.borderColor = 'var(--gold-premium)';
+            select.style.boxShadow = '0 0 20px rgba(212, 166, 42, 0.25)';
+            setTimeout(() => {
+                select.style.borderColor = '';
+                select.style.boxShadow = '';
+            }, 1500);
+        }
+    });
+});
