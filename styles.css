@@ -333,9 +333,10 @@ section {
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
-.glass-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 25px 55px rgba(0,0,0,0.4), 0 0 30px rgba(20, 217, 230, 0.06);
+.glass-card:hover, .glass-card:active {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212, 166, 42, 0.1);
+    border-color: rgba(212, 166, 42, 0.3);
 }
 
 /* ===========================
@@ -757,9 +758,15 @@ section {
    Experience Grid Cards
    =========================== */
 .experience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
+}
+
+.experience-grid .glass-card {
+    flex: 1 1 320px;
+    max-width: 380px;
 }
 
 .experience-grid .glass-card h3 {
@@ -774,8 +781,16 @@ section {
     line-height: 1.6;
 }
 
+@media (max-width: 768px) {
+    .experience-grid .glass-card {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
 .experience-grid .full-width-card {
-    grid-column: 1 / -1;
+    flex: 1 1 100%;
+    max-width: 100%;
     text-align: center;
 }
 
