@@ -2,7 +2,7 @@
 // Countdown Banner – Two-Phase Timer
 // ===========================
 (function initCountdown() {
-    const PHASE1_DATE = new Date('2026-03-25T23:59:59-05:00'); // Pre-launch ends
+    const PHASE1_DATE = new Date('2026-03-22T23:59:59-05:00'); // Preventa ends
     const PHASE2_DATE = new Date('2026-03-28T16:00:00-05:00'); // Event starts
 
     const banner = document.getElementById('countdown-banner');
@@ -64,9 +64,9 @@
         let time, phaseLabel, ctaText;
 
         if (!phase1Diff.expired) {
-            // Phase 1: Pre-launch countdown
+            // Phase 1: Preventa countdown
             time = phase1Diff;
-            phaseLabel = '🔥 El gran lanzamiento se acerca — asegura tu lugar en';
+            phaseLabel = '🔥 PRECIOS DE "PREVENTA" — El tiempo se agota en';
             ctaText = 'Reserva ahora';
         } else {
             // Phase 2: Launch countdown
@@ -77,6 +77,7 @@
 
         label.textContent = phaseLabel;
         cta.textContent = ctaText;
+
 
         // Show/hide days column
         const daysUnit = daysEl.parentElement;
