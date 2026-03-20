@@ -3,7 +3,7 @@
 // ===========================
 (function initCountdown() {
     const PHASE1_DATE = new Date('2026-03-25T23:59:59-05:00'); // Pre-launch ends
-    const PHASE2_DATE = new Date('2026-03-28T10:00:00-05:00'); // Event starts
+    const PHASE2_DATE = new Date('2026-03-28T16:00:00-05:00'); // Event starts
 
     const banner = document.getElementById('countdown-banner');
     const label = document.getElementById('countdown-label');
