@@ -69,12 +69,12 @@ body {
 
 .countdown-phase-label {
     font-family: 'Sora', sans-serif;
-    font-size: 0.68rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+    text-transform: none;
+    letter-spacing: 0.02em;
     color: var(--gold-premium);
-    margin-right: 8px;
+    margin-right: 12px;
     white-space: nowrap;
 }
 
