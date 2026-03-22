@@ -282,6 +282,55 @@ a {
     color: var(--text-sec);
 }
 
+.text-cyan {
+    color: var(--color-cyan);
+}
+
+/* Shimmer Gold Text Effect */
+.shimmer-gold-text {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1.35rem; /* Mayor tamaño */
+    text-align: center;
+    margin-top: 2rem;
+    letter-spacing: 0.5px;
+    
+    /* Textura de gradiente */
+    background: linear-gradient(
+        -45deg,
+        #B8860B 20%, /* Oro Oscuro */
+        #FFD700 40%, /* Oro Brillo */
+        #FFFDE7 50%, /* Destello Blanco */
+        #FFD700 60%, /* Oro Brillo */
+        #B8860B 80%  /* Oro Oscuro */
+    );
+    background-size: 200% auto;
+    
+    /* Recorte de texto */
+    color: var(--color-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Animación infinita */
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@media (max-width: 768px) {
+    .shimmer-gold-text {
+        font-size: 1.15rem;
+    }
+}
+
+/* ===========================
+   Typographic Utilities
+   =========================== */
 /* ===========================
    PRICING
    =========================== */
