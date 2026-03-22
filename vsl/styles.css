@@ -575,15 +575,24 @@ a {
 
 .host-image-wrapper {
     flex: 1;
-    position: relative;
-    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-.host-image {
+.host-image-top {
     width: 100%;
-    height: 100%;
+    height: 65%;
     object-fit: cover;
-    display: block;
+    object-position: top center;
+    background-color: #030a0d;
+}
+
+.host-image-bottom {
+    width: 100%;
+    height: 35%;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* ===========================
