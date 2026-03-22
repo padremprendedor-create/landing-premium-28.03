@@ -131,10 +131,10 @@ form.addEventListener('submit', async (e) => {
     }
 
     // Redirección WhatsApp inmediata después de resolver webhook (o fallar local)
-    // Número: 5199220381
+    // Número: 51992220381
     // Mensaje: Hola, soy [Nombre], quiero asegurar mi entrada para el lanzamiento de Elohim Raymi
     const mensajeDecodificado = `Hola, soy ${data.nombre_completo}, quiero asegurar mi entrada para el lanzamiento de Elohim Raymi`;
-    const urlWa = `https://wa.me/5199220381?text=${encodeURIComponent(mensajeDecodificado)}`;
+    const urlWa = `https://wa.me/51992220381?text=${encodeURIComponent(mensajeDecodificado)}`;
     
     window.location.href = urlWa;
 });
