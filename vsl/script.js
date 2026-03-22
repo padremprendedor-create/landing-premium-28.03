@@ -116,7 +116,7 @@ form.addEventListener('submit', async (e) => {
 
     try {
         // Enviar a Webhook
-        await fetch('https://clase-easypanel-n8n.zycrzt.easypanel.host/webhook/evento2803', {
+        await fetch('https://clase-easypanel-n8n.zycrzt.easypanel.host/webhook/vsl2803', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
