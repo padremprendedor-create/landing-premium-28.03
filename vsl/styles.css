@@ -675,13 +675,14 @@ a {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    min-height: 400px; /* Aseguramos un alto mínimo para que el flyer tenga espacio */
 }
 
 .host-image-top {
     width: 100%;
-    height: 65%;
-    object-fit: cover;
-    object-position: top center;
+    height: auto;
+    object-fit: contain; /* Cambiamos a contain para que el flyer se vea completo */
+    object-position: center;
     background-color: #030a0d;
 }
 
