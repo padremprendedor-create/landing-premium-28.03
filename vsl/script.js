@@ -138,3 +138,56 @@ form.addEventListener('submit', async (e) => {
     
     window.location.href = urlWa;
 });
+
+// ===========================
+// Aforo Progress Bar & Messages
+// ===========================
+(function initAforo() {
+    const EVENT_DATE = new Date('2026-03-28T16:00:00-05:00');
+    // Consideramos que la campaña empezó hace unos días, por lo que el progreso inicial es alto (90%)
+    // y subirá lentamente hasta el 100% el día del evento.
+    // Usaremos un progreso mínimo del 90%
+    const TARGET_DATE = EVENT_DATE.getTime();
+    
+    // Configuración de la barra de progreso
+    const progressBar = document.getElementById('aforo-bar');
+    if (progressBar) {
+        function updateProgressBar() {
+            const now = new Date().getTime();
+            const timeRemaining = TARGET_DATE - now;
+            
+            // Asumimos un máximo de 5 días para llenar el último 10% (de 90 a 100)
+            const MAX_TIME = 5 * 24 * 60 * 60 * 1000;
+            
+            let percentage = 100; // Por defecto lleno si ya pasó o está por empezar
+            
+            if (timeRemaining > 0) {
+                // Si el evento aún no empieza
+                if (timeRemaining > MAX_TIME) {
+                    percentage = 90; // Topado a mínimo 90%
+                } else {
+                    // Calcula el porcentaje entre 90 y 100 basado en el tiempo restante
+                    const progress = 1 - (timeRemaining / MAX_TIME);
+                    percentage = 90 + (progress * 10);
+                }
+            }
+            
+            progressBar.style.width = `${Math.min(100, Math.max(90, percentage))}%`;
+        }
+
+        updateProgressBar();
+        setInterval(updateProgressBar, 60000); // Actualiza cada minuto
+    }
+
+    // Rotación de Mensajes
+    const messages = document.querySelectorAll('.aforo-msg');
+    let msgIndex = 0;
+
+    if (messages.length > 0) {
+        setInterval(() => {
+            messages[msgIndex].classList.remove('active');
+            msgIndex = (msgIndex + 1) % messages.length;
+            messages[msgIndex].classList.add('active');
+        }, 4000); // Cambia el mensaje cada 4 segundos
+    }
+})();

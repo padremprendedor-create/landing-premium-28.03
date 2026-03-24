@@ -918,3 +918,71 @@ a {
     vertical-align: middle;
     margin-right: 8px;
 }
+
+/* ===========================
+   AFORO PROGRESS BAR
+   =========================== */
+.aforo-progress-wrapper {
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+}
+
+.aforo-messages {
+    position: relative;
+    height: 24px;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+}
+
+.aforo-msg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.aforo-msg.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.aforo-bar-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    border: 1px solid rgba(212, 166, 42, 0.3);
+}
+
+.aforo-bar-fill {
+    height: 100%;
+    width: 90%; /* Inicial */
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-premium), #fffde7, var(--gold-premium));
+    background-size: 200% 100%;
+    border-radius: 10px;
+    animation: goldFlow 2s linear infinite;
+    box-shadow: 0 0 10px rgba(212, 166, 42, 0.5);
+    transition: width 1s ease-in-out;
+}
+
+@keyframes goldFlow {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+@media (max-width: 768px) {
+    .aforo-msg {
+        font-size: 0.8rem;
+    }
+}
