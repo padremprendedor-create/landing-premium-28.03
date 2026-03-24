@@ -87,9 +87,9 @@ const planInput = document.getElementById('selected_plan');
 const submitBtn = document.getElementById('submit-btn');
 
 function openWhatsAppModal(planType) {
-    planInput.value = planType;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const message = `¡Hola! Quiero asegurar mi ENTRADA para el evento y mi nombre es : `;
+    const urlWa = `https://wa.me/51992220381?text=${encodeURIComponent(message)}`;
+    window.location.href = urlWa;
 }
 
 function closeWhatsAppModal() {
