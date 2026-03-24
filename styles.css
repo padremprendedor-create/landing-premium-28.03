@@ -2116,8 +2116,113 @@ footer p {
         height: 30px;
     }
 
+
     .btn-whatsapp {
         font-size: 0.85rem;
         padding: 1rem 1.5rem;
+    }
+}
+
+/* ===========================
+   Host Card (Carlos Leyva)
+   =========================== */
+.host-card {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 3.5rem !important;
+    max-width: 950px;
+    margin: 0 auto;
+    border: 1px solid rgba(212, 166, 42, 0.2) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.host-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 166, 42, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.host-img-container {
+    flex-shrink: 0;
+    width: 280px;
+    height: 350px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 166, 42, 0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.host-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%; /* Ajuste para centrar mejor la cara de Carlos Leyva */
+    transition: transform 0.6s ease;
+}
+
+.host-card:hover .host-photo {
+    transform: scale(1.05);
+}
+
+.host-info {
+    flex: 1;
+}
+
+.host-name {
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.host-bio {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.host-quote {
+    font-style: italic;
+    color: var(--gold-premium);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-left: 2px solid var(--gold-premium);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+@media (max-width: 900px) {
+    .host-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 2.5rem 1.5rem !important;
+    }
+
+    .host-img-container {
+        width: 220px;
+        height: 280px;
+    }
+
+    .host-quote {
+        border-left: none;
+        padding-left: 0;
+        margin-top: 1.5rem;
+    }
+
+    .host-quote::before {
+        content: '"';
+        font-size: 3rem;
+        display: block;
+        height: 20px;
+        margin-bottom: 10px;
+        opacity: 0.3;
     }
 }
