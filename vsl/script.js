@@ -87,7 +87,16 @@ const planInput = document.getElementById('selected_plan');
 const submitBtn = document.getElementById('submit-btn');
 
 function openWhatsAppModal(planType) {
-    const message = `¡Hola! Quiero asegurar mi ENTRADA para el evento y mi nombre es : `;
+    let message = `¡Hola! Quiero asegurar mi ENTRADA para el evento.`;
+    
+    if (planType === 'GENERAL') {
+        message = `Hola, quiero separar mi entrada GENERAL para el lanzamiento oficial de ELOHIM RAYMI con US$10.`;
+    } else if (planType === 'VIP') {
+        message = `Hola, quiero separar mi entrada VIP para el lanzamiento oficial de ELOHIM RAYMI con US$10.`;
+    } else if (planType === 'EXPERIENCE') {
+        message = `Hola, quiero separar mi entrada EXPERIENCE para el lanzamiento oficial de ELOHIM RAYMI con US$10.`;
+    }
+
     const urlWa = `https://wa.me/51992220381?text=${encodeURIComponent(message)}`;
     window.location.href = urlWa;
 }
